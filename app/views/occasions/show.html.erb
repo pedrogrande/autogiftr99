@@ -22,8 +22,36 @@
 
 <p>
   <strong>Recipient:</strong>
-  <%= @occasion.recipient %>
+  <%= @occasion.recipient.name if @occasion.recipient %>
 </p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Image</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gifts.each do |gift| %>
+      <tr>
+        <td><%= link_to gift.name, gift_path(gift) %></td>
+        <td><%= number_to_currency(gift.price) %></td>
+        <td><%= image_tag gift.image, width: '70px' %></td>
+        <td>
+          <% unless @occasion.gifts.include?(gift) %>
+            <%= link_to 'Add to occasion', add_gift_occasion_path(gift: gift.id) %>
+          <% end %>
+        </td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to 'Edit', edit_occasion_path(@occasion) %> |
 <%= link_to 'Back', occasions_path %>

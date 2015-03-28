@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   get 'admin', to: 'admin#index'
 
-  resources :occasions
+  resources :occasions do
+    member do
+      get :add_gift
+      get :remove_gift
+    end
+  end
+
   resources :recipients
   resources :gifts
   resources :accounts

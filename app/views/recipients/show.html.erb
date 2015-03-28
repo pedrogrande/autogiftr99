@@ -30,10 +30,7 @@
   <%= @recipient.relationship %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @recipient.user %>
-</p>
+<%= link_to 'Add occasion', new_occasion_path(recipient: @recipient.id), class: 'btn btn-primary' %>
 
 <%= link_to 'Edit', edit_recipient_path(@recipient) %> |
 <%= link_to 'Back', recipients_path %>
