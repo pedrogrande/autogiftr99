@@ -52,4 +52,10 @@
 <hr>
 <h2>Upcoming deliveries</h2>
 
+<% @occasions.each do |occastion| %>
+
+<p><%= occasion.date %>: <%= occasion.recipient.name %></p>
+
+
+<% end %>
 

@@ -10,4 +10,12 @@ class Occasion < ActiveRecord::Base
   		errors.add(:date, "Must be 7 days in future")
   	end
   end
+
+  def self.future
+  	where(date >= Date.today)
+  end
+
+  def self.order_by_date
+  	future.order(date: :asc)
+  end
 end
